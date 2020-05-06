@@ -11,7 +11,7 @@
            placeholder="请输入搜索关键词"
            @search="onSearch"
            background="#17A2B8"
-         >                    
+         >
            <template #action>
              <div @click="onSearch">搜索</div>
            </template>
@@ -49,8 +49,7 @@
 		  </template>
 		</van-search>
 
-    <van-notice-bar mode="closeable" class="NoticeBar" background="#ecf9ff"  v-show="!searcgshow">
-      通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容通知内容
+    <van-notice-bar mode="closeable" class="NoticeBar" background="#ecf9ff"  v-show="!searcgshow" :text="this.noticeifo">
     </van-notice-bar>
 
 
@@ -118,13 +117,32 @@ export default {
       searchindex:'',
 	  searcgshow:false,
 	  modalShow:false,
-	  citydata:[{}]
+	  citydata:[{}],
+    noticeifo:"",
     };
   },
   created() {
-
+      this.getNoticedata()
   },
   methods: {
+    getNoticedata(){
+          this.axios({
+              url: 'http://api.tianapi.com/txapi/ncov/index',
+              method: 'GET',
+              params:{
+                  key: '869941cd56fe09e14b255d12467651bd'
+                }
+            }).then(res => {
+              if (res.data.code == 200) {
+                // this.noticeifo=
+                let noticeobj={}
+                noticeobj=res.data.newslist[0].news[Math.floor(Math.random() * res.data.newslist[0].news.length + 1)-1]
+                this.noticeifo=noticeobj.infoSource+" : "+noticeobj.summary
+                  // console.log(this.noticeifo)
+
+              }
+            });
+    },
     handleHover(hovered) {
       this.isHovered = hovered;
     },
@@ -149,11 +167,6 @@ export default {
       })
 
     },
-    // //初始化地图数据
-    // mapEchartsInit(){
-    //     var myChart=echarts.init(this.$refs.map);
-    //     myChart.setOption(mapdata, true);
-    // }
     onsearch(){
 		this.active=this.searchindex
 		// console.log(this.searchindex)
@@ -162,7 +175,6 @@ export default {
         if(this.search.charAt(this.search.length-1)=='省'){
           data=data.substr(0,data.length-1)
         }
-
         let ping=py.chineseToPinYin(data)
 			this.active=this.searchindex=2
 			this.seacon=this.navdata[2].search
@@ -198,13 +210,7 @@ export default {
 		  // console.log(yhis.citydata)
 		  this.modalShow=true
 			this.search=''
-	  }
-
-
-
-    },
-    getprodata(){
-
+      }
     }
 
   },
@@ -226,7 +232,7 @@ export default {
 .NoticeBar{
   margin-top: 20px;
   height: 2.5rem;
-font-size: 0.67rem;color: #1989fa;
+font-size: 0.65rem;color: #1989fa;
 }
 .msearch{
 	height: 2rem;

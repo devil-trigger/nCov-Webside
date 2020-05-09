@@ -1,7 +1,7 @@
 export default{
     legend: {},
   title : {
-      text: '省份疫情Top4',
+      text: '世界各国现有确诊Top10',
       subtext: '',
       x:'center',
       bottom:'10%'
@@ -9,10 +9,10 @@ export default{
     tooltip: {},
     dataset: {
         source: [
-            ['product', '2012', '2013', '2014', '2015'],
-            ['Matcha Latte', 41.1, 30.4, 65.1, 53.3],
-            ['Milk Tea', 86.5, 92.1, 85.7, 83.1],
-            ['Cheese Cocoa', 24.1, 67.2, 79.5, 86.4]
+            ['国家',],
+            ['累计确诊',],
+            ['现有确诊',],
+            ['死亡数',]
         ]
     },
     xAxis: [

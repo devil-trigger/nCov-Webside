@@ -1,5 +1,7 @@
 <template>
   <div class="coumap">
+
+
     <b-overlay :show="show" rounded="sm" style="height: 100%;" v-if='show'></b-overlay>
     <div ref="map" class="map"></div>
     <!-- -------------------------------------------------------------- -->
@@ -28,6 +30,9 @@
 <script>
   import echarts from "echarts";
   import 'echarts/map/js/china';
+
+
+
   //引入地图数据
   import mapdata from '@/untlis/map-CountryOption.js'
   export default{
@@ -97,7 +102,7 @@
     },
     mounted() {
          this.getepidata("currentConfirmedCount");
-    }
+    },
   }
 </script>
 

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <router-view/>
 
   </div>
@@ -13,15 +12,11 @@
  }
 </style>
 <script>
-
   export default{
     data(){
       return{
 
       }
     },
-    components:{
-
-    }
   }
 </script>

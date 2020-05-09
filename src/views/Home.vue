@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+
+
+
+
     <div>
       <b-navbar toggleable="lg" type="dark" variant="info">
         <b-navbar-brand href="#">疫情实时信息</b-navbar-brand>
@@ -71,7 +75,8 @@
   </div>
 </template>
 <script>
-  import py from '@/untlis/py.js'
+  import py from '@/untlis/py.js';
+
 export default {
   name: 'Home',
   data() {
@@ -170,6 +175,9 @@ export default {
     onsearch(){
 		this.active=this.searchindex
 		// console.log(this.searchindex)
+    if(this.search==''||this.search.length<2){
+      return
+    }
       if(this.searchindex==1){
         let data=this.search
         if(this.search.charAt(this.search.length-1)=='省'){
@@ -213,7 +221,7 @@ export default {
       }
     }
 
-  },
+  }
 };
 </script>
 <style lang="less" scoped="scoped">

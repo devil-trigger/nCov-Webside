@@ -6,7 +6,7 @@
         :lrcType="3"
         showLrc
         :list='this.list'
-        listFolded
+        autoplay
       />
     </div>
   </div>

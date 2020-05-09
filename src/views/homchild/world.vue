@@ -1,5 +1,6 @@
 <template>
   <div class="wormap">
+
       <b-overlay :show="show" rounded="sm" style="height: 100%;" v-if='show'></b-overlay>
       <div ref="map" class="map"></div>
     <div class="text-center my-3 swichmy">
@@ -88,7 +89,7 @@
     },
     mounted() {
         this.getWorldData("currentConfirmedCount")
-    }
+    },
   }
 
 </script>
